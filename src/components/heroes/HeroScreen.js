@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useMemo} from "react";
 import {Redirect, useParams} from "react-router-dom";
 import {getHeroById} from "../../selectors/getHeroById";
 
@@ -8,7 +8,10 @@ export const HeroScreen = ({history}) => {
     // Este hook de React va a extraer los parametros que viajen en la url
     const {heroId} = useParams();
 
-    const hero = getHeroById(heroId);
+    // Utilizamos el useMemo ya que no queremos obtener el heroe cada vez que se renderiza
+    // Solo se recargará si el id cambia, que se indica con el segundo parámetro del useMemo
+    // que son las dependencias. En este caso heorId es el que depende del cambio
+    const hero = useMemo(() => getHeroById(heroId), [heroId]);
 
     if (!hero) {
         return <Redirect to="/" />;

@@ -1,9 +1,13 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 import { heroes } from "../../data/heroes";
 import { useForm } from "../../hooks/useForm";
 import { HeroCard } from "../heroes/HeroCard";
 
-export const SearchScreen = () => {
+export const SearchScreen = ({ history }) => {
+  // Hook de react router
+  const location = useLocation();
+
   const heroesFiltered = heroes;
 
   const [formValues, { handleInputChange }] = useForm({
@@ -15,7 +19,7 @@ export const SearchScreen = () => {
 
   const handleSearch = (event) => {
     event.preventDefault();
-    console.log(searchText);
+    history.push(`?q=${searchText}`);
   };
 
   return (
@@ -36,10 +40,7 @@ export const SearchScreen = () => {
               onChange={handleInputChange}
               autoComplete="off"
             />
-            <button
-              type="submit"
-              className="btn btn-block btn-outline-primary m-1"
-            >
+            <button type="submit" className="btn btn-outline-primary m-1">
               Search
             </button>
           </form>

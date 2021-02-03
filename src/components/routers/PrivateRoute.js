@@ -9,6 +9,9 @@ export const PrivateRoute = ({
     component: Component,
     ...rest
 }) => {
+    //Cada vez que pasa por este componente guarda la última página visitada
+    localStorage.setItem("lastPath", rest.location.pathname);
+
     //El props en este caso recibiría el history, el location, etc
     return (
         <Route

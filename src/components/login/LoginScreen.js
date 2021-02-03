@@ -1,6 +1,5 @@
 import React, {useContext, useReducer} from "react";
 import {AuthContext} from "../../auth/AuthContext";
-import {authReducer} from "../../auth/authReducer";
 import {types} from "../../types/types";
 
 // Aquí extraemos la propiedad history que ya existe en el componente Route

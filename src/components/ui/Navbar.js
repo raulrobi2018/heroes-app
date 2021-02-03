@@ -1,5 +1,5 @@
 import React, {useContext} from "react";
-import {Link, NavLink} from "react-router-dom";
+import {Link, NavLink, useHistory} from "react-router-dom";
 import {AuthContext} from "../../auth/AuthContext";
 import {types} from "../../types/types";
 
@@ -9,7 +9,13 @@ export const Navbar = () => {
         dispatch
     } = useContext(AuthContext);
 
+    //Este es un hook que lo provee el Router.  Utiliza la variable del contexto "history"
+    //la cual hemos utilizado en otros componentes
+    const history = useHistory();
+
     const handleLogout = () => {
+        history.replace("/login");
+
         dispatch({
             type: types.logout
         });

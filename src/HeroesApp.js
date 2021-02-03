@@ -18,6 +18,8 @@ export const HeroesApp = () => {
 
     return (
         //Distribuyo el user y el dispatch con el AuthContext
+        //El Provider facilita información del árbol de componentes, por ejemplo
+        //permite extraer la información del usuario y el dispatch
         <AuthContext.Provider value={{user, dispatch}}>
             <AppRouter />
         </AuthContext.Provider>

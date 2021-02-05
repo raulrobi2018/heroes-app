@@ -16,7 +16,7 @@ describe("Testing PrivateRoute component", () => {
 
     Storage.prototype.setItem = jest.fn();
 
-    test("should display the component if the user is autenticated and save the localStorage", () => {
+    test("should display the component if the user is authenticated and save the localStorage", () => {
         const wrapper = mount(
             // El MemoryRouter es un Higher Order Component creado para poder hacer pruebas de Routes
             //Un Route no se puede utilizar fuera de un Router. Nuestro PrivateRoute retorna un Route,
@@ -36,5 +36,23 @@ describe("Testing PrivateRoute component", () => {
             "lastPath",
             "/marvel"
         );
+    });
+
+    test("should block the component if the user is not authenticated", () => {
+        const wrapper = mount(
+            // El MemoryRouter es un Higher Order Component creado para poder hacer pruebas de Routes
+            //Un Route no se puede utilizar fuera de un Router. Nuestro PrivateRoute retorna un Route,
+            //por eso debemos utilizar el MemoryRouter
+            <MemoryRouter>
+                <PrivateRoute
+                    isAutenticated={false}
+                    // Envío cualquier componente dentro de una función porque es requerida una function
+                    component={() => <span>Listo</span>}
+                    {...props}
+                />
+            </MemoryRouter>
+        );
+
+        expect(wrapper.find("span").exists()).toBe(false);
     });
 });

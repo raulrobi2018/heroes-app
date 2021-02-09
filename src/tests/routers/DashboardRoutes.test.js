@@ -1,10 +1,11 @@
 import {mount, configure} from "enzyme";
 
-//Esto es necesario para que no falle el mount en React 17
-import Adapter from "@wojtekmaj/enzyme-adapter-react-17";
 import {DashboardRoutes} from "../../components/routers/DashboardRoutes";
 import {AuthContext} from "../../auth/AuthContext";
 import {MemoryRouter} from "react-router-dom";
+
+//Esto es necesario para que no falle el mount en React 17
+import Adapter from "@wojtekmaj/enzyme-adapter-react-17";
 configure({adapter: new Adapter()});
 // ------------------------------------------------------
 

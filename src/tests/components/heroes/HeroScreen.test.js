@@ -6,7 +6,7 @@ import "@testing-library/jest-dom";
 
 //Esto es necesario para que no falle el mount en React 17
 import Adapter from "@wojtekmaj/enzyme-adapter-react-17";
-import {HeroScreen} from "../../../../components/heroes/HeroScreen";
+import {HeroScreen} from "../../../components/heroes/HeroScreen";
 configure({adapter: new Adapter()});
 // ------------------------------------------------------
 

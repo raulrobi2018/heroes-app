@@ -1,6 +1,7 @@
 import React, {useMemo} from "react";
 import {Redirect, useParams} from "react-router-dom";
 import {getHeroById} from "../../selectors/getHeroById";
+import {heroImages} from "../../helpers/heroImages";
 
 // Aquí extraemos la propiedad history que ya existe en el componente Route
 // ya que es agregado por React
@@ -39,7 +40,7 @@ export const HeroScreen = ({history}) => {
         <div className="row mt-5">
             <div className="col-4">
                 <img
-                    src={`../assets/heroes/${heroId}.jpg`}
+                    src={heroImages(`./${heroId}.jpg`).default}
                     alt={superhero}
                     className="img-thumbnail animate__animated animate__fadeInLeft"
                 />
